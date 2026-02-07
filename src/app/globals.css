@@ -1,26 +1,64 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Base */
+:root{
+  --bg: #f7fbff;          /* blanco azulado */
+  --fg: #0b1220;          /* texto oscuro */
+  --apdes: #0B3C5D;       /* azul principal */
+  --apdes-2: #1E5AA8;     /* azul secundario */
+  --sky: #EAF2FB;         /* celeste claro */
+  --voice: #E11D2E;       /* rojo acento (La Voz) */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+*{ box-sizing:border-box; }
+html, body{ min-height:100%; }
+
+body{
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Tipos */
+.font-title{
+  font-family: var(--font-montserrat), system-ui, sans-serif;
+}
+.font-body{
+  font-family: var(--font-inter), system-ui, sans-serif;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Botones */
+.btn-primary{
+  @apply inline-flex items-center justify-center gap-3 rounded-full px-6 py-3
+         text-sm font-semibold transition focus:outline-none;
+  background: var(--apdes-2);
+  color: white;
+}
+.btn-primary:hover{ filter: brightness(1.05); }
+
+.btn-accent{
+  @apply inline-flex items-center justify-center gap-3 rounded-full px-6 py-3
+         text-sm font-semibold transition focus:outline-none;
+  background: var(--voice);
+  color: white;
+}
+.btn-accent:hover{ filter: brightness(1.06); }
+
+.btn-ghost{
+  @apply inline-flex items-center justify-center gap-3 rounded-full px-6 py-3
+         text-sm font-semibold transition;
+  background: rgba(255,255,255,0.65);
+  border: 1px solid rgba(11,60,93,0.15);
+  color: rgba(11,18,32,0.9);
+}
+.btn-ghost:hover{ background: rgba(255,255,255,0.85); }
+.btn-disabled{
+  @apply inline-flex items-center justify-center gap-3 rounded-full px-6 py-3
+         text-sm font-semibold;
+  background: rgba(11,60,93,0.08);
+  color: rgba(11,60,93,0.45);
+  border: 1px solid rgba(11,60,93,0.10);
+  cursor: not-allowed;
 }
