@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Montserrat, Inter } from "next/font/google";
 import "./globals.css";
+
+// 1. Importamos los componentes fijos
 import Navbar from "@/components/navbar/Navbar";
+import Footer from "@/components/Footer"; // Asegurate que la ruta sea correcta donde guardaste el archivo
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -23,9 +26,20 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={`${montserrat.variable} ${inter.variable}`}>
-      <body className="min-h-dvh">
+      {/* Agregamos 'flex-col' para asegurar que el footer siempre quede abajo si hay poco contenido */}
+      <body className="min-h-dvh flex flex-col justify-between bg-[#FAFCFF]">
+        
+        {/* Navbar fijo arriba */}
         <Navbar />
-        {children}
+        
+        {/* El contenido de la página (Hero, Agenda, etc.) */}
+        <main className="flex-grow">
+          {children}
+        </main>
+
+        {/* Footer fijo abajo (con el crédito a Torx) */}
+        <Footer />
+        
       </body>
     </html>
   );
