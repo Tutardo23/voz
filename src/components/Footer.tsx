@@ -12,7 +12,7 @@ export default function Footer() {
         
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           
-          {/* 1. MARCA + REDES (Todo junto para ahorrar espacio) */}
+          {/* 1. MARCA + REDES */}
           <div className="flex flex-col items-center md:items-start gap-1">
             <div className="flex items-center gap-3">
               <h2 className="font-bebas text-2xl tracking-wide text-white">
@@ -33,19 +33,44 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* 2. LOGOS ORGANIZAN (Horizontal siempre) */}
+          {/* 2. LOGOS ORGANIZAN (Con cápsula + Truco para borrar fondo blanco) */}
           <div className="flex items-center gap-3 bg-black/10 rounded-full px-4 py-1.5 border border-white/5">
             <span className="text-[9px] font-bold uppercase tracking-wider text-white/30 mr-1">
               Organizan
             </span>
-            <Image src="/escudos/logo-colegio.png" alt="Pucará" width={24} height={24} className="w-6 h-6 object-contain" />
-            <div className="h-3 w-[1px] bg-white/10" />
-            <Image src="/escudos/logo-cerros.png" alt="Cerros" width={24} height={24} className="w-6 h-6 object-contain" />
-            <div className="h-3 w-[1px] bg-white/10" />
-            <Image src="/escudos/logo-cerritos.png" alt="Cerritos" width={24} height={24} className="w-6 h-6 object-contain" />
+            
+            <div className="flex items-center gap-3">
+              {/* mix-blend-mode: 'multiply' hace que lo blanco se vuelva transparente */}
+              <Image 
+                src="/escudos/logo-colegi.png" 
+                alt="Pucará" 
+                width={26} 
+                height={26} 
+                className="w-6 h-6 object-contain"
+                style={{ mixBlendMode: 'multiply' }} 
+              />
+              <div className="h-3 w-[1px] bg-white/10" />
+              <Image 
+                src="/escudos/logo-cerros.png" 
+                alt="Cerros" 
+                width={26} 
+                height={26} 
+                className="w-6 h-6 object-contain"
+                style={{ mixBlendMode: 'multiply' }} 
+              />
+              <div className="h-3 w-[1px] bg-white/10" />
+              <Image 
+                src="/escudos/logo-cerritos.png" 
+                alt="Cerritos" 
+                width={26} 
+                height={26} 
+                className="w-6 h-6 object-contain"
+                style={{ mixBlendMode: 'multiply' }} 
+              />
+            </div>
           </div>
 
-          {/* 3. CREDITOS (Torx) */}
+          {/* 3. CREDITOS */}
           <div className="flex flex-col items-center md:items-end text-[10px] text-white/30 font-medium">
             <span>© 2026 APDES</span>
             <div className="flex items-center gap-1 select-none mt-0.5">

@@ -5,7 +5,6 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { List, X } from "phosphor-react";
-// Asegurate que la ruta del import sea la correcta según tu estructura de carpetas
 import SafeSpaceModal from "@/components/safe/SafeSpaceModal";
 
 export default function Navbar() {
@@ -25,7 +24,7 @@ export default function Navbar() {
     );
   }, []);
 
-  // 2. Detectar scroll para efecto vidrio
+  // 2. Detectar scroll
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -34,7 +33,7 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // 3. Animación del menú mobile
+  // 3. Animación menú mobile
   useEffect(() => {
     if (open && menuRef.current) {
       gsap.fromTo(
@@ -61,8 +60,8 @@ export default function Navbar() {
       >
         <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-6">
           
-          {/* MARCA */}
-          <Link href="/" className="group flex items-center gap-3">
+          {/* MARCA (Siempre visible) */}
+          <Link href="/" className="group flex items-center gap-3 shrink-0">
             <span
               className="relative grid h-10 w-10 place-items-center overflow-hidden rounded-full shadow-lg shadow-blue-900/20 transition-transform group-hover:scale-110"
               style={{
@@ -77,7 +76,7 @@ export default function Navbar() {
               <div className="font-bebas text-xl tracking-[0.15em] text-[#0B3C5D]">
                 LA VOZ <span className="text-[#E11D2E]">INNOVATE</span>
               </div>
-              <div className="font-body text-[10px] uppercase tracking-widest text-[#0B3C5D]/60">
+              <div className="font-body text-[10px] uppercase tracking-widest text-[#0B3C5D]/60 hidden sm:block">
                 APDES Tucumán · 2026
               </div>
             </div>
@@ -95,11 +94,9 @@ export default function Navbar() {
                 AGENDA
                 <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-[#E11D2E] transition-all group-hover:w-full" />
               </Link>
-              
-              {/* Si necesitas agregar 'Materiales' de nuevo, va aquí */}
             </nav>
 
-            {/* Separador */}
+            {/* Separador Desktop */}
             <div className="hidden md:block h-6 w-[1px] bg-[#0B3C5D]/10" />
 
             {/* BOTÓN ESPACIO SEGURO (Desktop) */}
@@ -123,35 +120,36 @@ export default function Navbar() {
               ESPACIO SEGURO
             </button>
 
-            {/* ESCUDOS (Desktop & Mobile) */}
-            <div className="flex items-center gap-2">
+            {/* ESCUDOS (SOLO DESKTOP - AQUÍ ESTABA EL ERROR) */}
+            {/* Agregué 'hidden md:flex' para que no ocupen espacio en celular */}
+            <div className="hidden md:flex items-center gap-2">
               <Image
-                src="/escudos/logo-colegio.png"
+                src="/escudos/logo-colegi.png"
                 alt="Colegio Pucará"
                 width={36}
                 height={36}
-                className="transition-transform hover:scale-110 hover:brightness-110"
+                className="transition-transform hover:scale-110 hover:brightness-110 shrink-0"
               />
               <Image
                 src="/escudos/logo-cerros.png"
                 alt="Colegio Los Cerros"
                 width={36}
                 height={36}
-                className="transition-transform hover:scale-110 hover:brightness-110"
+                className="transition-transform hover:scale-110 hover:brightness-110 shrink-0"
               />
               <Image
                 src="/escudos/logo-cerritos.png"
                 alt="Jardín Los Cerritos"
                 width={36}
                 height={36}
-                className="transition-transform hover:scale-110 hover:brightness-110"
+                className="transition-transform hover:scale-110 hover:brightness-110 shrink-0"
               />
             </div>
 
             {/* TOGGLE MENÚ (Mobile) */}
             <button
               onClick={() => setOpen(true)}
-              className="md:hidden flex h-10 w-10 items-center justify-center rounded-full bg-white/80 ring-1 ring-[#0B3C5D]/10 shadow-sm active:scale-95 transition-all"
+              className="md:hidden flex h-10 w-10 items-center justify-center rounded-full bg-white/80 ring-1 ring-[#0B3C5D]/10 shadow-sm active:scale-95 transition-all shrink-0"
             >
               <List size={22} className="text-[#0B3C5D]" />
             </button>
@@ -162,13 +160,11 @@ export default function Navbar() {
       {/* --- MENÚ MOBILE --- */}
       {open && (
         <div className="fixed inset-0 z-[60] flex items-start justify-end p-4">
-          {/* Backdrop */}
           <div
             className="absolute inset-0 bg-black/20 backdrop-blur-[2px]"
             onClick={() => setOpen(false)}
           />
 
-          {/* Panel */}
           <div
             ref={menuRef}
             className="relative w-full max-w-sm rounded-3xl bg-white p-5 shadow-2xl ring-1 ring-[#0B3C5D]/10"
@@ -195,11 +191,10 @@ export default function Navbar() {
                 <List size={18} className="opacity-50" />
               </Link>
 
-              {/* Botón Espacio Seguro (Mobile) */}
               <button
                 onClick={() => {
                   setOpen(false);
-                  setTimeout(() => setOpenSafe(true), 100); // Pequeño delay para suavidad
+                  setTimeout(() => setOpenSafe(true), 100);
                 }}
                 className="flex items-center justify-between rounded-xl bg-[#E11D2E] p-4 font-bold text-white shadow-lg shadow-red-500/20 active:scale-[0.98] transition-transform"
               >
@@ -210,10 +205,11 @@ export default function Navbar() {
               </button>
             </nav>
 
-            <div className="mt-6 flex justify-center gap-4 border-t border-slate-100 pt-4 opacity-60 grayscale">
-              <Image src="/escudos/logo-colegio.png" width={28} height={28} alt="Pucará" />
-              <Image src="/escudos/logo-cerros.png" width={28} height={28} alt="Cerros" />
-              <Image src="/escudos/logo-cerritos.png" width={28} height={28} alt="Cerritos" />
+            {/* ESCUDOS EN MENÚ MOBILE (Aquí sí se ven bien) */}
+            <div className="mt-6 flex justify-center gap-6 border-t border-slate-100 pt-6 opacity-80">
+              <Image src="/escudos/logo-colegi.png" width={40} height={40} alt="Pucará" className="object-contain" />
+              <Image src="/escudos/logo-cerros.png" width={40} height={40} alt="Cerros" className="object-contain" />
+              <Image src="/escudos/logo-cerritos.png" width={40} height={40} alt="Cerritos" className="object-contain" />
             </div>
           </div>
         </div>
