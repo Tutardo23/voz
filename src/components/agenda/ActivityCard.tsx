@@ -31,7 +31,7 @@ export default function ActivityCard({ actividad }: { actividad: Actividad }) {
   const isBreak = actividad.tipo === "break";
   const isMisa = actividad.tipo === "misa";
 
-  // Detectamos si es una lista compleja (tiene ":") para mostrar vertical, o simple para mostrar con comas
+  // Lógica: Si hay ":" (ej: "Jardín: Gabriela"), mostramos lista vertical. Si no, todo seguido con comas.
   const showVertical = actividad.responsables?.some(r => r.includes(":"));
 
   // --- VISTA COMPACTA ---
@@ -100,17 +100,17 @@ export default function ActivityCard({ actividad }: { actividad: Actividad }) {
                      </span>
                   </div>
                   
-                  {/* LÓGICA DE RENDERIZADO MEJORADA */}
+                  {/* AQUÍ ESTÁ LA LÓGICA DE VISUALIZACIÓN */}
                   <div className="text-sm font-semibold text-[#0B3C5D]/90 pl-0.5">
                     {showVertical ? (
-                      // Si es complejo (ej: Disciplina Positiva), va uno abajo del otro
+                      // Lista vertical para casos complejos
                       <div className="flex flex-col gap-1 mt-1">
                         {actividad.responsables.map((resp, i) => (
                           <span key={i} className="block">{resp}</span>
                         ))}
                       </div>
                     ) : (
-                      // Si es simple (ej: Juan, Ana), va con comas
+                      // Lista horizontal con comas para casos simples
                       <span>{actividad.responsables.join(", ")}</span>
                     )}
                   </div>
@@ -119,7 +119,8 @@ export default function ActivityCard({ actividad }: { actividad: Actividad }) {
               ) : null}
             </div>
 
-            {/* Columna Derecha: Botones alineados a la derecha */}
+            {/* Columna Derecha: Botones */}
+            {/* flex-col: uno abajo del otro | items-end: alineados a la derecha */}
             <div className="flex flex-col gap-3 shrink-0 items-start md:items-end pt-4 md:pt-0">
               
               {actividad.materialUrl && (
