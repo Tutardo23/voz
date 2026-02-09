@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { List, X } from "phosphor-react";
+import { List, X, GraduationCap } from "phosphor-react"; // Agregué el ícono GraduationCap
 import SafeSpaceModal from "@/components/safe/SafeSpaceModal";
 
 export default function Navbar() {
@@ -87,6 +87,8 @@ export default function Navbar() {
             
             {/* NAV DESKTOP */}
             <nav className="hidden md:flex items-center gap-8 text-sm font-bold tracking-wide text-[#0B3C5D]/70">
+              
+              {/* Link AGENDA */}
               <Link
                 href="/agenda"
                 className="relative group hover:text-[#E11D2E] transition-colors"
@@ -94,6 +96,17 @@ export default function Navbar() {
                 AGENDA
                 <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-[#E11D2E] transition-all group-hover:w-full" />
               </Link>
+
+              {/* Link CAMPUS (Nuevo) */}
+              <Link
+                href="https://campus.apdes.edu.ar/"
+                target="_blank"
+                className="relative group hover:text-[#E11D2E] transition-colors"
+              >
+                CAMPUS
+                <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-[#E11D2E] transition-all group-hover:w-full" />
+              </Link>
+
             </nav>
 
             {/* Separador Desktop */}
@@ -120,26 +133,25 @@ export default function Navbar() {
               ESPACIO SEGURO
             </button>
 
-            {/* ESCUDOS (SOLO DESKTOP - AQUÍ ESTABA EL ERROR) */}
-            {/* Agregué 'hidden md:flex' para que no ocupen espacio en celular */}
+            {/* ESCUDOS (SOLO DESKTOP) */}
             <div className="hidden md:flex items-center gap-2">
               <Image
-                src="/escudos/logo-colegi.png"
-                alt="Colegio Pucará"
-                width={36}
-                height={36}
-                className="transition-transform hover:scale-110 hover:brightness-110 shrink-0"
-              />
-              <Image
-                src="/escudos/logo-cerros.png"
+                src="/escudos/escudoLCE.png"
                 alt="Colegio Los Cerros"
                 width={36}
                 height={36}
                 className="transition-transform hover:scale-110 hover:brightness-110 shrink-0"
               />
               <Image
-                src="/escudos/logo-cerritos.png"
+                src="/escudos/escudoLCII.png"
                 alt="Jardín Los Cerritos"
+                width={36}
+                height={36}
+                className="transition-transform hover:scale-110 hover:brightness-110 shrink-0"
+              />
+              <Image
+                src="/escudos/escudoPU.png"
+                alt="Colegio Pucará"
                 width={36}
                 height={36}
                 className="transition-transform hover:scale-110 hover:brightness-110 shrink-0"
@@ -182,6 +194,7 @@ export default function Navbar() {
             </div>
 
             <nav className="flex flex-col gap-3">
+              {/* AGENDA MOBILE */}
               <Link
                 href="/agenda"
                 onClick={() => setOpen(false)}
@@ -191,6 +204,18 @@ export default function Navbar() {
                 <List size={18} className="opacity-50" />
               </Link>
 
+              {/* CAMPUS MOBILE (Nuevo) */}
+              <Link
+                href="https://campus.apdes.edu.ar/"
+                target="_blank"
+                onClick={() => setOpen(false)}
+                className="flex items-center justify-between rounded-xl bg-[#EAF2FB] p-4 font-bold text-[#0B3C5D] active:scale-[0.98] transition-transform"
+              >
+                IR AL CAMPUS
+                <GraduationCap size={18} className="opacity-50" />
+              </Link>
+
+              {/* ESPACIO SEGURO MOBILE */}
               <button
                 onClick={() => {
                   setOpen(false);
@@ -205,11 +230,11 @@ export default function Navbar() {
               </button>
             </nav>
 
-            {/* ESCUDOS EN MENÚ MOBILE (Aquí sí se ven bien) */}
+            {/* ESCUDOS EN MENÚ MOBILE */}
             <div className="mt-6 flex justify-center gap-6 border-t border-slate-100 pt-6 opacity-80">
-              <Image src="/escudos/logo-colegi.png" width={40} height={40} alt="Pucará" className="object-contain" />
-              <Image src="/escudos/logo-cerros.png" width={40} height={40} alt="Cerros" className="object-contain" />
-              <Image src="/escudos/logo-cerritos.png" width={40} height={40} alt="Cerritos" className="object-contain" />
+              <Image src="/escudos/escudoLCE.png" width={40} height={40} alt="Pucará" className="object-contain" />
+              <Image src="/escudos/escudoLCII.png" width={40} height={40} alt="Cerros" className="object-contain" />
+              <Image src="/escudos/escudoPU.png" width={40} height={40} alt="Cerritos" className="object-contain" />
             </div>
           </div>
         </div>

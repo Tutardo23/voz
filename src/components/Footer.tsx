@@ -41,17 +41,10 @@ export default function Footer() {
             
             <div className="flex items-center gap-3">
               {/* mix-blend-mode: 'multiply' hace que lo blanco se vuelva transparente */}
-              <Image 
-                src="/escudos/logo-colegi.png" 
-                alt="Pucará" 
-                width={26} 
-                height={26} 
-                className="w-6 h-6 object-contain"
-                style={{ mixBlendMode: 'multiply' }} 
-              />
+              
               <div className="h-3 w-[1px] bg-white/10" />
               <Image 
-                src="/escudos/logo-cerros.png" 
+                src="/escudos/escudoLCE.png" 
                 alt="Cerros" 
                 width={26} 
                 height={26} 
@@ -60,8 +53,15 @@ export default function Footer() {
               />
               <div className="h-3 w-[1px] bg-white/10" />
               <Image 
-                src="/escudos/logo-cerritos.png" 
+                src="/escudos/escudoLCII.png" 
                 alt="Cerritos" 
+                width={26} 
+                height={26} 
+                className="w-6 h-6 object-contain"
+                style={{ mixBlendMode: 'multiply' }} 
+              /><Image 
+                src="/escudos/escudoPU.png" 
+                alt="Pucará" 
                 width={26} 
                 height={26} 
                 className="w-6 h-6 object-contain"

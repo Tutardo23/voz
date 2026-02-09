@@ -10,7 +10,7 @@ export default function Hero() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // 1. Fondo Base (Las manchas grandes y borrosas de fondo)
+      // 1. Fondo Base
       gsap.to(".aurora-blob", {
         x: "random(-20, 20)",
         y: "random(-20, 20)",
@@ -23,11 +23,11 @@ export default function Hero() {
         force3D: true,
       });
 
-      // 2. NUEVO EFECTO: Pelotas Flotantes Pequeñas (Más definidas)
+      // 2. Pelotas Flotantes
       gsap.to(".floating-orb", {
-        y: "random(-30, 30)", // Flotan más arriba y abajo
+        y: "random(-30, 30)",
         x: "random(-15, 15)",
-        rotation: "random(0, 360)", // Giran lentamente
+        rotation: "random(0, 360)",
         scale: "random(0.9, 1.1)",
         duration: "random(3, 6)",
         repeat: -1,
@@ -40,7 +40,7 @@ export default function Hero() {
         force3D: true,
       });
 
-      // 3. Entrada de la Tarjeta
+      // 3. Tarjeta
       gsap.from(".glass-card", {
         y: 30,
         opacity: 0,
@@ -50,7 +50,7 @@ export default function Hero() {
         clearProps: "transform"
       });
 
-      // 4. Entrada del Texto
+      // 4. Texto
       gsap.from(".hero-content", {
         y: 20,
         opacity: 0,
@@ -69,28 +69,21 @@ export default function Hero() {
       ref={containerRef}
       className="relative flex min-h-[95vh] w-full items-center justify-center overflow-hidden bg-[#FAFCFF] px-4 pt-20 pb-10"
     >
-      {/* --- CAPA 1: FONDO ANIMADO BASE (Muy borroso atrás) --- */}
+      {/* --- CAPA 1: FONDO ANIMADO --- */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none transform-gpu">
         <div className="aurora-blob will-change-transform absolute -top-[10%] -left-[10%] h-[50vh] w-[50vh] rounded-full bg-[#1E5AA8]/20 blur-[60px] md:blur-[80px]" />
         <div className="aurora-blob will-change-transform absolute top-[20%] -right-[10%] h-[60vh] w-[60vh] rounded-full bg-[#E11D2E]/15 blur-[80px] md:blur-[100px]" />
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20" />
       </div>
 
-      {/* --- CAPA 2: NUEVAS PELOTAS FLOTANTES (Más chicas y definidas) --- */}
-      {/* Están entre el fondo y la tarjeta. Z-index 5. */}
+      {/* --- CAPA 2: PELOTAS FLOTANTES --- */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none transform-gpu z-5">
-        {/* Orb Azul Izquierda */}
         <div className="floating-orb will-change-transform absolute top-1/4 left-[5%] h-24 w-24 md:h-32 md:w-32 rounded-full bg-gradient-to-tr from-[#1E5AA8] to-blue-400 opacity-80 blur-[1px] shadow-lg shadow-blue-900/20" />
-        
-        {/* Orb Roja Derecha Abajo */}
         <div className="floating-orb will-change-transform absolute bottom-1/4 right-[5%] h-28 w-28 md:h-40 md:w-40 rounded-full bg-gradient-to-bl from-[#E11D2E] to-orange-400 opacity-80 blur-[1px] shadow-lg shadow-red-900/20" />
-        
-        {/* Orb Pequeña Arriba Derecha */}
         <div className="floating-orb will-change-transform absolute top-[15%] right-[20%] h-16 w-16 rounded-full bg-blue-200/60 blur-[2px]" />
       </div>
 
-
-      {/* --- CAPA 3: TARJETA DE CRISTAL (Z-Index 10, encima de todo) --- */}
+      {/* --- CAPA 3: TARJETA DE CRISTAL --- */}
       <div className="glass-card relative z-10 w-full max-w-4xl overflow-hidden rounded-[2.5rem] bg-white/40 shadow-2xl shadow-blue-900/10 ring-1 ring-white/60 backdrop-blur-xl transform-gpu">
         
         <div className="absolute top-0 left-0 h-[1px] w-full bg-gradient-to-r from-transparent via-white to-transparent opacity-50" />
@@ -146,12 +139,14 @@ export default function Hero() {
               <ArrowRight className="ml-1 transition-transform group-hover:translate-x-1" />
             </Link>
             
-            <button
-               onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
+            {/* BOTÓN CONOCÉ MÁS -> AHORA VA AL DRIVE */}
+            <Link
+               href="https://drive.google.com/file/d/1OTIoO-VPc6nm8cbFb_v4Dqdmu5LJNupy/view?usp=drive_link"
+               target="_blank"
                className="group flex w-full items-center justify-center gap-2 rounded-xl bg-white px-8 py-3.5 text-[#0B3C5D] ring-1 ring-slate-200 transition-all hover:ring-[#E11D2E]/40 sm:w-auto sm:py-4"
             >
               <span className="text-sm font-bold tracking-wider">CONOCÉ MÁS</span>
-            </button>
+            </Link>
           </div>
 
           {/* --- DATA BAR --- */}
