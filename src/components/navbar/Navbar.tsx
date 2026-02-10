@@ -136,21 +136,21 @@ export default function Navbar() {
             {/* ESCUDOS (SOLO DESKTOP) */}
             <div className="hidden md:flex items-center gap-2">
               <Image
-                src="/escudos/escudoLCE.png"
+                src="/escudos/escudolos.png"
                 alt="Colegio Los Cerros"
                 width={36}
                 height={36}
                 className="transition-transform hover:scale-110 hover:brightness-110 shrink-0"
               />
               <Image
-                src="/escudos/escudoLCII.png"
+                src="/escudos/escudocer.png"
                 alt="Jardín Los Cerritos"
                 width={36}
                 height={36}
                 className="transition-transform hover:scale-110 hover:brightness-110 shrink-0"
               />
               <Image
-                src="/escudos/escudoPU.png"
+                src="/escudos/escudopuc.png"
                 alt="Colegio Pucará"
                 width={36}
                 height={36}
@@ -232,9 +232,9 @@ export default function Navbar() {
 
             {/* ESCUDOS EN MENÚ MOBILE */}
             <div className="mt-6 flex justify-center gap-6 border-t border-slate-100 pt-6 opacity-80">
-              <Image src="/escudos/escudoLCE.png" width={40} height={40} alt="Pucará" className="object-contain" />
-              <Image src="/escudos/escudoLCII.png" width={40} height={40} alt="Cerros" className="object-contain" />
-              <Image src="/escudos/escudoPU.png" width={40} height={40} alt="Cerritos" className="object-contain" />
+              <Image src="/escudos/escudolos.png" width={40} height={40} alt="Pucará" className="object-contain" />
+              <Image src="/escudos/escudocer.png" width={40} height={40} alt="Cerros" className="object-contain" />
+              <Image src="/escudos/escudopuc.png" width={40} height={40} alt="Cerritos" className="object-contain" />
             </div>
           </div>
         </div>

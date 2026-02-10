@@ -33,16 +33,15 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* 2. LOGOS ORGANIZAN (Con cápsula + Truco para borrar fondo blanco) */}
+          {/* 2. LOGOS ORGANIZAN (Orden corregido) */}
           <div className="flex items-center gap-3 bg-black/10 rounded-full px-4 py-1.5 border border-white/5">
             <span className="text-[9px] font-bold uppercase tracking-wider text-white/30 mr-1">
               Organizan
             </span>
             
             <div className="flex items-center gap-3">
-              {/* mix-blend-mode: 'multiply' hace que lo blanco se vuelva transparente */}
               
-              <div className="h-3 w-[1px] bg-white/10" />
+              {/* Logo 1: Los Cerros */}
               <Image 
                 src="/escudos/escudoLCE.png" 
                 alt="Cerros" 
@@ -51,7 +50,11 @@ export default function Footer() {
                 className="w-6 h-6 object-contain"
                 style={{ mixBlendMode: 'multiply' }} 
               />
-              <div className="h-3 w-[1px] bg-white/10" />
+
+              {/* Línea Separadora 1 */}
+              <div className="h-4 w-[1px] bg-white/20" />
+
+              {/* Logo 2: Los Cerritos */}
               <Image 
                 src="/escudos/escudoLCII.png" 
                 alt="Cerritos" 
@@ -59,7 +62,13 @@ export default function Footer() {
                 height={26} 
                 className="w-6 h-6 object-contain"
                 style={{ mixBlendMode: 'multiply' }} 
-              /><Image 
+              />
+
+              {/* Línea Separadora 2 */}
+              <div className="h-4 w-[1px] bg-white/20" />
+
+              {/* Logo 3: Pucará */}
+              <Image 
                 src="/escudos/escudoPU.png" 
                 alt="Pucará" 
                 width={26} 
@@ -67,6 +76,7 @@ export default function Footer() {
                 className="w-6 h-6 object-contain"
                 style={{ mixBlendMode: 'multiply' }} 
               />
+
             </div>
           </div>
 
