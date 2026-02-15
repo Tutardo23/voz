@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { ShieldCheck, X, GraduationCap, PenNib, FileText, ArrowRight, CaretRight } from "phosphor-react";
+import { ShieldCheck, X, GraduationCap, PenNib, FileText, ArrowRight, CaretRight, RocketLaunch } from "phosphor-react";
 
 export default function SafeSpaceModal({ onClose }: { onClose: () => void }) {
   const modalRef = useRef<HTMLDivElement>(null);
@@ -36,12 +36,12 @@ export default function SafeSpaceModal({ onClose }: { onClose: () => void }) {
 
       <div 
         ref={modalRef}
-        className="relative w-full max-w-lg overflow-hidden rounded-3xl bg-white shadow-2xl ring-1 ring-[#0B3C5D]/10"
+        className="relative w-full max-w-lg overflow-hidden rounded-3xl bg-white shadow-2xl ring-1 ring-[#0B3C5D]/10 flex flex-col max-h-[90vh]"
       >
         {/* Decoración superior */}
         <div className="absolute top-0 left-0 h-1.5 w-full bg-gradient-to-r from-[#1E5AA8] to-[#3BAA75]" />
 
-        <div className="p-6 md:p-8">
+        <div className="p-6 md:p-8 overflow-y-auto">
           {/* Header */}
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-3">
@@ -73,7 +73,6 @@ export default function SafeSpaceModal({ onClose }: { onClose: () => void }) {
           {/* Lista de Tareas */}
           <div className="mt-6 flex flex-col gap-3">
             
-            {/* ITEM 1: CURSO */}
             <ActionRow 
               icon={GraduationCap}
               title="Curso de Protección"
@@ -82,7 +81,6 @@ export default function SafeSpaceModal({ onClose }: { onClose: () => void }) {
               cta="Ir al Campus"
             />
 
-            {/* ITEM 2: PROTOCOLO */}
             <ActionRow 
               icon={PenNib}
               title="Firma del Protocolo"
@@ -91,7 +89,6 @@ export default function SafeSpaceModal({ onClose }: { onClose: () => void }) {
               cta="Firmar ahora"
             />
 
-            {/* ITEM 3: ANTECEDENTES */}
             <ActionRow 
               icon={FileText}
               title="Antecedentes Penales"
@@ -100,12 +97,40 @@ export default function SafeSpaceModal({ onClose }: { onClose: () => void }) {
               cta="Iniciar trámite"
             />
 
+            {/* --- SECCIÓN: ONBOARDING --- */}
+            <div className="mt-4 rounded-2xl bg-[#f8fafc] border-2 border-dashed border-[#1E5AA8]/20 p-5">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1E5AA8] text-white shadow-md">
+                  <RocketLaunch size={22} weight="fill" />
+                </div>
+                <div>
+                  <h4 className="font-bebas text-xl text-[#0B3C5D] tracking-wide leading-none">
+                    BIENVENIDA ONBOARDING
+                  </h4>
+                  <p className="text-[10px] font-bold text-[#1E5AA8] uppercase tracking-wider">Nuevo ingreso</p>
+                </div>
+              </div>
+              
+              <p className="text-xs text-slate-500 leading-relaxed mb-4">
+                Te invitamos a recorrer la propuesta de contenidos de Apdes para conocernos mejor. El curso es lineal para descubrir los recursos progresivamente.
+              </p>
+              
+              <a 
+                href="https://campus.apdes.edu.ar/courses/bienvenida-onboarding/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 w-full rounded-xl bg-[#0B3C5D] py-3 text-xs font-bold text-white hover:bg-[#1E5AA8] transition-all shadow-sm group"
+              >
+                INGRESAR AL CURSO
+                <ArrowRight size={14} weight="bold" className="group-hover:translate-x-1 transition-transform" />
+              </a>
+            </div>
           </div>
 
-          {/* Botón Cerrar */}
+          {/* Botón Cerrar (Ahora en azul institucional) */}
           <button
             onClick={onClose}
-            className="mt-8 w-full rounded-xl bg-[#0B3C5D] py-3.5 text-sm font-bold tracking-wide text-white transition-all hover:bg-[#1E5AA8] hover:shadow-lg active:scale-[0.98]"
+            className="mt-6 w-full rounded-xl bg-[#0B3C5D] py-3.5 text-sm font-bold tracking-wide text-white transition-all hover:bg-[#1E5AA8] hover:shadow-lg active:scale-[0.98]"
           >
             ENTENDIDO, GRACIAS
           </button>
@@ -115,7 +140,6 @@ export default function SafeSpaceModal({ onClose }: { onClose: () => void }) {
   );
 }
 
-// Subcomponente para cada item (más limpio)
 function ActionRow({ icon: Icon, title, desc, href, cta }: any) {
   return (
     <a 
@@ -143,7 +167,6 @@ function ActionRow({ icon: Icon, title, desc, href, cta }: any) {
         <ArrowRight weight="bold" />
       </div>
       
-      {/* Flecha simple para móvil */}
       <CaretRight size={16} className="text-slate-300 sm:hidden" />
     </a>
   );

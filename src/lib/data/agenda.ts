@@ -233,6 +233,13 @@ export const agenda: DiaAgenda[] = [
         materialUrl: "https://drive.google.com/drive/folders/1c9b93IzyXzOjn4bIv6S8vNaDFs8c8m0m?usp=drive_link",
         objetivos: OBJETIVOS_DP,
       },
+      {
+  horario: "12:30 a 13:00",
+  modulo: "Encuesta Final",
+  tema: "Evaluación de la Jornada",
+  tipo: "give", // O el tipo que prefieras
+  materialUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfck33huW36yeuB4Hnyute8oey_XKChvFK98OTUMsazhEZQAQ/viewform",
+},
     ],
   },
 ];

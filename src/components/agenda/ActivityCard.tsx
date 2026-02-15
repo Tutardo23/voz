@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { MapPin, BookOpen, Users, ArrowRight, Coffee, Sparkle, Target } from "phosphor-react";
+import { MapPin, BookOpen, Users, ArrowRight, Coffee, Sparkle, Target, ClipboardText } from "phosphor-react";
 import ObjectivesModal from "@/components/agenda/ObjectivesModal";
 
 type Actividad = {
@@ -30,11 +30,11 @@ export default function ActivityCard({ actividad }: { actividad: Actividad }) {
   const config = styleConfig[actividad.tipo] || styleConfig.institucional;
   const isBreak = actividad.tipo === "break";
   const isMisa = actividad.tipo === "misa";
+  // Detectamos si es la encuesta para darle un estilo especial al botón
+  const isEncuesta = actividad.modulo.toLowerCase().includes("encuesta");
 
-  // Lógica: Si hay ":" (ej: "Jardín: Gabriela"), mostramos lista vertical. Si no, todo seguido con comas.
   const showVertical = actividad.responsables?.some(r => r.includes(":"));
 
-  // --- VISTA COMPACTA ---
   if (isBreak || isMisa) {
     const Icon = config.icon || Sparkle;
     return (
@@ -56,7 +56,6 @@ export default function ActivityCard({ actividad }: { actividad: Actividad }) {
     );
   }
 
-  // --- VISTA COMPLETA ---
   return (
     <>
       <div className="group relative overflow-hidden rounded-2xl bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ring-1 ring-slate-100">
@@ -65,7 +64,6 @@ export default function ActivityCard({ actividad }: { actividad: Actividad }) {
         <div className="p-6 sm:p-7">
           <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
             
-            {/* Columna Izquierda: Información */}
             <div className="space-y-4 md:w-3/4">
               <div className="flex flex-wrap items-center gap-3">
                 <span className={`rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest ${config.badge}`}>
@@ -90,7 +88,6 @@ export default function ActivityCard({ actividad }: { actividad: Actividad }) {
                 )}
               </div>
 
-              {/* --- SECCIÓN ENCARGADOS --- */}
               {actividad.responsables?.length ? (
                 <div className="mt-2 pt-2 border-t border-slate-100/80">
                   <div className="flex items-center gap-1.5 mb-1.5">
@@ -100,37 +97,35 @@ export default function ActivityCard({ actividad }: { actividad: Actividad }) {
                      </span>
                   </div>
                   
-                  {/* AQUÍ ESTÁ LA LÓGICA DE VISUALIZACIÓN */}
                   <div className="text-sm font-semibold text-[#0B3C5D]/90 pl-0.5">
                     {showVertical ? (
-                      // Lista vertical para casos complejos
                       <div className="flex flex-col gap-1 mt-1">
                         {actividad.responsables.map((resp, i) => (
                           <span key={i} className="block">{resp}</span>
                         ))}
                       </div>
                     ) : (
-                      // Lista horizontal con comas para casos simples
                       <span>{actividad.responsables.join(", ")}</span>
                     )}
                   </div>
-
                 </div>
               ) : null}
             </div>
 
-            {/* Columna Derecha: Botones */}
-            {/* flex-col: uno abajo del otro | items-end: alineados a la derecha */}
             <div className="flex flex-col gap-3 shrink-0 items-start md:items-end pt-4 md:pt-0">
               
               {actividad.materialUrl && (
                 <Link
                   href={actividad.materialUrl}
                   target="_blank"
-                  className="btn-ghost group/btn flex w-full md:w-auto items-center justify-center md:justify-end gap-2 rounded-full border border-slate-200 bg-slate-50 px-5 py-2.5 text-xs font-bold text-[#0B3C5D] transition-all hover:border-[#E11D2E]/30 hover:bg-white hover:text-[#E11D2E]"
+                  className={`group/btn flex w-full md:w-auto items-center justify-center md:justify-end gap-2 rounded-full border px-5 py-2.5 text-xs font-bold transition-all ${
+                    isEncuesta 
+                    ? "bg-[#3BAA75] border-[#3BAA75] text-white hover:bg-[#2d8a5d] shadow-md shadow-green-900/10" 
+                    : "bg-slate-50 border-slate-200 text-[#0B3C5D] hover:border-[#E11D2E]/30 hover:bg-white hover:text-[#E11D2E]"
+                  }`}
                 >
-                  <BookOpen size={18} weight="duotone" />
-                  MATERIAL
+                  {isEncuesta ? <ClipboardText size={18} weight="fill" /> : <BookOpen size={18} weight="duotone" />}
+                  {isEncuesta ? "COMPLETAR ENCUESTA" : "MATERIAL"}
                   <ArrowRight size={14} className="transition-transform group-hover/btn:translate-x-1" />
                 </Link>
               )}
