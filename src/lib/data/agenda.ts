@@ -217,29 +217,42 @@ export const agenda: DiaAgenda[] = [
         tema: "Miércoles de ceniza",
         tipo: "misa",
       },
+      // --- BLOQUE 1: JARDÍN Y PRIMARIA ---
       {
         horario: "09:00 a 12:00",
         modulo: "INNOVATE",
-        tema: "Disciplina positiva",
-        // Éstos tienen ":" así que el código los pondrá UNO ABAJO DEL OTRO automáticamente
+        tema: "Disciplina positiva (Jardín y Primaria)",
         responsables: [
           "Jardín: Gabriela Ortega y equipo",
           "Primaria Los Cerros: Pilar Hernández · María Trejo",
           "Primaria Pucará: Elisa Agüero · Manuel Páez",
-          "Secundaria: Virginia Eroles · Evangelina Mohamad",
         ],
-        lugar: "Los Cerritos (Pucará) / Los Cerros (Cerritos y Cerros)",
+        lugar: "Los Cerritos (Pucará) / Los Cerros (Primaria)",
         tipo: "innovate",
         materialUrl: "https://drive.google.com/drive/folders/1c9b93IzyXzOjn4bIv6S8vNaDFs8c8m0m?usp=drive_link",
         objetivos: OBJETIVOS_DP,
       },
+      // --- BLOQUE 2: SECUNDARIA ---
       {
-  horario: "12:30 a 13:00",
-  modulo: "Encuesta Final",
-  tema: "Evaluación de la Jornada",
-  tipo: "give", // O el tipo que prefieras
-  materialUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfck33huW36yeuB4Hnyute8oey_XKChvFK98OTUMsazhEZQAQ/viewform",
-},
+        horario: "10:00 a 12:00",
+        modulo: "INNOVATE",
+        tema: "Disciplina positiva (Secundaria)",
+        responsables: [
+          "Secundaria: Virginia Eroles · Evangelina Mohamad",
+        ],
+        lugar: "Los Cerros (Secundaria)",
+        tipo: "innovate",
+        materialUrl: "https://drive.google.com/drive/folders/1c9b93IzyXzOjn4bIv6S8vNaDFs8c8m0m?usp=drive_link",
+        objetivos: OBJETIVOS_DP,
+      },
+      // --- CIERRE: ENCUESTA FINAL ---
+      {
+        horario: "12:00 a 12:30",
+        modulo: "Encuesta Final",
+        tema: "Evaluación de la Jornada",
+        tipo: "give",
+        materialUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfck33huW36yeuB4Hnyute8oey_XKChvFK98OTUMsazhEZQAQ/viewform",
+      },
     ],
   },
 ];
